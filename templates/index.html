@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Responsive Blog Card Slider </title>
+  <meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'>
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="blog-slider">
+  <div class="blog-slider__wrp swiper-wrapper">
+    <div class="blog-slider__item swiper-slide">
+      <div class="blog-slider__img">
+        {% if prediction %}
+        <img src="{{img_path}}" alt="">
+        {% endif %}
+      </div>
+      <div class="blog-slider__content">
+        <div class="blog-slider__title">Generated Caption:</div>
+
+        <!-- edited\s -->
+        {% if prediction %}
+        <div class="blog-slider__text"> <i> {{prediction}} </i> </div>
+        {% endif %}
+        <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
+        <input type="file" class="blog-slider__button"  name="my_image" id="imageUpload" >        
+        <button type="submit" style="border: none;" class="blog-slider__button">Submit</button>
+        </form>
+        <!-- edited\end -->
+      </div>
+    </div>
+
+    
+
+    
+  </div>
+  <div class="blog-slider__pagination"></div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script>
+<script src="{{url_for('static', filename='script.js')}}"></script>
+
+</body>
+</html>
